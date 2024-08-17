@@ -7,10 +7,10 @@ import Diarybox from "@/components/NewDiarybox/DiaryButton";
 import MyDiaryItem from "@/components/MyDiarybox/MyDiaryItem";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/firebase/config.js";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 
 const MyDiary = () => {
-  const { currentUser, isLoading, fetchUserInfo } = useUserStore();
+  const { currentUser, isLoading, fetchUserInfo } = UseUserStore();
   const router = useRouter();
 
   useEffect(() => {

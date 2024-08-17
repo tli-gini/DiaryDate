@@ -9,10 +9,10 @@ import "./chatroom.css";
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/firebase/config.js";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 
-const chatroom = () => {
-  const { currentUser, isLoading, fetchUserInfo } = useUserStore();
+const Chatroom = () => {
+  const { currentUser, isLoading, fetchUserInfo } = UseUserStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const chatroom = () => {
   );
 };
 
-export default chatroom;
+export default Chatroom;

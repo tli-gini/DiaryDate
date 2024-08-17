@@ -7,10 +7,10 @@ import Postbox from "@/components/Postbox/Postbox";
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/firebase/config.js";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 
 const DiaryShare = () => {
-  const { currentUser, isLoading, fetchUserInfo } = useUserStore();
+  const { currentUser, isLoading, fetchUserInfo } = UseUserStore();
   const router = useRouter();
 
   useEffect(() => {

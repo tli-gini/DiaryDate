@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./MyDiaryItem.css";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config.js";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 
 const MyDiaryItem = () => {
-  const { currentUser } = useUserStore();
+  const { currentUser } = UseUserStore();
 
   if (!currentUser) {
     return null;

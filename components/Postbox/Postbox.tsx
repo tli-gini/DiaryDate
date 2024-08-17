@@ -5,7 +5,7 @@ import { IoIosPaperPlane } from "react-icons/io";
 import { IoIosPeople } from "react-icons/io";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 import { toast } from "react-toastify";
 
 interface User {
@@ -17,7 +17,7 @@ interface User {
 const Postbox = () => {
   const [addFriend, setAddFriend] = useState();
   const [users, setUsers] = useState<User[]>([]);
-  const { currentUser, sendFriendRequest } = useUserStore();
+  const { currentUser, sendFriendRequest } = UseUserStore();
 
   useEffect(() => {
     const fetchUsers = async () => {

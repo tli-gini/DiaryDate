@@ -4,8 +4,8 @@ import { IoIosSearch } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
-import { useUserStore } from "@/lib/userStorage";
-import { useChatStore } from "@/lib/chatStorage";
+import { UseUserStore } from "@/lib/userStorage";
+import { UseChatStore } from "@/lib/chatStorage";
 
 interface Chat {
   id: string;
@@ -15,7 +15,7 @@ interface Chat {
 }
 
 const ChatList = () => {
-  const { currentUser } = useUserStore();
+  const { currentUser } = UseUserStore();
   const [chats, setChats] = useState<Chat[]>([]);
 
   useEffect(() => {

@@ -13,8 +13,8 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
-import { useUserStore } from "@/lib/userStorage";
-import { useChatStore } from "@/lib/chatStorage";
+import { UseUserStore } from "@/lib/userStorage";
+import { UseChatStore } from "@/lib/chatStorage";
 
 interface FriendRequest {
   id: string;
@@ -25,7 +25,7 @@ interface FriendRequest {
 }
 
 const FriendRequest: React.FC = () => {
-  const { currentUser } = useUserStore();
+  const { currentUser } = UseUserStore();
   const [requests, setRequests] = useState<FriendRequest[]>([]);
 
   useEffect(() => {

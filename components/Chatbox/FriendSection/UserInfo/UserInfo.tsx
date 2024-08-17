@@ -1,10 +1,10 @@
 import "./UserInfo.scss";
 import React from "react";
 import { IoIosMore } from "react-icons/io";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 
 const UserInfo = () => {
-  const { currentUser } = useUserStore();
+  const { currentUser } = UseUserStore();
 
   if (!currentUser) {
     return null;

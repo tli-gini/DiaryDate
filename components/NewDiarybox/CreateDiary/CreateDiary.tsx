@@ -3,10 +3,10 @@ import { useRouter } from "next/navigation";
 import "./CreateDiary.css";
 import { db } from "@/firebase/config.js";
 import { addDoc, collection } from "firebase/firestore";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 
 const CreateDiary = () => {
-  const { currentUser } = useUserStore();
+  const { currentUser } = UseUserStore();
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [diaryText, setDiaryText] = useState("");
