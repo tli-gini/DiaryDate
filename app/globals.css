@@ -8,6 +8,7 @@
   --color-background: #fcefef;
   --color-white: #ffffff;
   --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+  --border: 1.5px solid var(--color-prim-background);
 }
 
 /* @media (prefers-color-scheme: dark) {
