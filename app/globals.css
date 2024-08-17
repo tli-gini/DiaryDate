@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@100..900&display=swap");
+
+:root {
+  --color-primary: #b64242;
+  --color-prim-background: rgba(182, 66, 66, 0.3);
+  --color-secondary: #764444;
+  --color-sec-background: #764444a0;
+  --color-background: #fcefef;
+  --color-white: #ffffff;
+  --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.noto-sans-tc {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.kalam-light {
+  font-family: "Kalam", cursive;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.kalam-regular {
+  font-family: "Kalam", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.kalam-bold {
+  font-family: "Kalam", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  width: 100%;
+}
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+}
+
+.page-background {
+  background-color: var(--color-background);
+}
+
+a {
+  text-decoration: none;
+}
+
+.loading {
+  display: flex;
+  background-color: var(--color-background);
+  justify-content: center;
+  min-height: 85vh;
+  color: var(--color-primary);
+  padding-top: 60px;
+  font-family: "Kalam", cursive;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* RWD */
+
+@media (min-width: 920px) and (max-width: 1200px) {
+}
+@media (min-width: 600px) and (max-width: 920px) {
+}
+@media (min-width: 360px) and (max-width: 600px) {
+}

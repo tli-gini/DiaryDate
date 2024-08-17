@@ -1,0 +1,51 @@
+.diary-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.diary-item {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  min-height: 40vh;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0px 0px 15px 0px rgba(182, 66, 66, 0.3);
+  border-radius: 20px;
+  background-color: var(--color-white);
+  color: var(--color-secondary);
+
+  .diary-item-title {
+    margin-bottom: 10px;
+    h2 {
+      font-weight: 400;
+    }
+  }
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+
+  .user-name {
+    font-size: 18px;
+  }
+
+  .user-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    padding: 10px;
+    color: var(--color-background);
+    background-color: var(--color-secondary);
+  }
+
+  .user-profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}

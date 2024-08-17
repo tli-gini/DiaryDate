@@ -1,0 +1,38 @@
+.user-info-container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .user-name {
+    font-size: 18px;
+  }
+
+  .user-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    padding: 10px;
+    color: var(--color-background);
+    background-color: var(--color-secondary);
+  }
+
+  .user-profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.more-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
