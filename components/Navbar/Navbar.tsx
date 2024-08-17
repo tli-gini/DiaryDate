@@ -9,12 +9,12 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/config";
-import { useUserStore } from "@/lib/userStorage";
+import { UseUserStore } from "@/lib/userStorage";
 import { toast } from "react-toastify";
 
 export default function Navbar() {
   const router = useRouter();
-  const { currentUser, fetchUserInfo } = useUserStore();
+  const { currentUser, fetchUserInfo } = UseUserStore();
 
   // user auth state
   useEffect(() => {
