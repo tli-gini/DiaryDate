@@ -2,12 +2,12 @@ import "./ChatList.scss";
 import { useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
 import { UseChatStore } from "@/lib/chatStorage";
 
-interface Chat {
+interface ChatFriend {
   id: string;
   displayName: string;
   lastMessage: string;
@@ -15,39 +15,30 @@ interface Chat {
 }
 
 const ChatList = () => {
-  const { currentUser } = UseUserStore();
-  const [chats, setChats] = useState<Chat[]>([]);
+  const { currentUser, getFriends } = UseUserStore();
+  const [chatFriends, setChatFriends] = useState<ChatFriend[]>([]);
 
   useEffect(() => {
     if (!currentUser?.id) return;
 
-    const fetchChats = async () => {
+    const fetchChatFriends = async () => {
       try {
-        const chatsCollection = collection(
-          db,
-          "users",
-          currentUser.id,
-          "friends"
-        );
-        const chatsSnapshot = await getDocs(chatsCollection);
-        const chatsList = chatsSnapshot.docs.map(
-          (doc) => ({ id: doc.id, ...doc.data() } as Chat)
-        );
-        setChats(chatsList);
+        const friends = await getFriends(currentUser.id);
+        setChatFriends(friends);
       } catch (error) {
-        console.error("Error fetching chats: ", error);
+        console.error("Error fetching chatFriends: ", error);
       }
     };
 
-    fetchChats();
-  }, [currentUser]);
+    fetchChatFriends();
+  }, [currentUser, getFriends]);
 
   if (!currentUser) {
     return null;
   }
 
   return (
-    <div className="chat-list">
+    <div className="chatFriend-list">
       <div className="search-section">
         <div className="search-bar">
           <IoIosSearch className="search-icon" />
@@ -59,13 +50,13 @@ const ChatList = () => {
         </div>
       </div>
       <div className="friend-item">
-        {/* friend info and chat */}
-        {chats.map((chat) => (
-          <div key={chat.id} className="friend">
+        {/* friend info and chatFriend */}
+        {chatFriends.map((chatFriend) => (
+          <div key={chatFriend.id} className="friend">
             {/* <FaUser className="friend-profile" /> */}
-            <img src={chat.profile} alt="img" />
+            <img src={chatFriend.profile} alt="img" />
             <div className="friend-name">
-              <span>{chat.displayName}</span>
+              <span>{chatFriend.displayName}</span>
               <p>Last message...</p>
             </div>
           </div>

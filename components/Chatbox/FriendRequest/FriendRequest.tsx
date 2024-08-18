@@ -25,7 +25,8 @@ interface FriendRequest {
 }
 
 const FriendRequest: React.FC = () => {
-  const { currentUser } = UseUserStore();
+  const { currentUser, acceptFriendRequest, rejectFriendRequest } =
+    UseUserStore();
   const [requests, setRequests] = useState<FriendRequest[]>([]);
 
   useEffect(() => {
@@ -52,62 +53,6 @@ const FriendRequest: React.FC = () => {
     return null;
   }
 
-  const handleAccept = async (requestId: string, fromUserId: string) => {
-    try {
-      const currentUserFriendRef = doc(
-        db,
-        "users",
-        currentUser.id,
-        "friends",
-        fromUserId
-      );
-      const fromUserFriendRef = doc(
-        db,
-        "users",
-        fromUserId,
-        "friends",
-        currentUser.id
-      );
-
-      // Check if the friend documents already exist
-      const currentUserFriendDoc = await getDoc(currentUserFriendRef);
-      const fromUserFriendDoc = await getDoc(fromUserFriendRef);
-
-      // create the document doesn't exist
-      if (!currentUserFriendDoc.exists()) {
-        await setDoc(currentUserFriendRef, {
-          friendUid: fromUserId,
-          displayName:
-            requests.find((request) => request.id === requestId)?.displayName ||
-            "",
-          profile:
-            requests.find((request) => request.id === requestId)?.profile || "",
-        });
-      }
-
-      if (!fromUserFriendDoc.exists()) {
-        await setDoc(fromUserFriendRef, {
-          friendUid: currentUser.id,
-          displayName: currentUser.username || "",
-          profile: currentUser.profile || "",
-        });
-      }
-
-      // Remove friend request
-      await deleteDoc(
-        doc(db, "users", currentUser.id, "friendRequests", requestId)
-      );
-    } catch (error) {
-      console.error("Error accepting friend request: ", error);
-    }
-  };
-
-  const handleReject = async (requestId: string) => {
-    await deleteDoc(
-      doc(db, "users", currentUser.id, "friendRequests", requestId)
-    );
-  };
-
   return (
     <div className="friend-request">
       <div className="title">
@@ -125,11 +70,15 @@ const FriendRequest: React.FC = () => {
             <div className="check-x-wrapper">
               <IoIosCheckmark
                 className="check-icon"
-                onClick={() => handleAccept(request.id, request.fromUser)}
+                onClick={() =>
+                  acceptFriendRequest(currentUser.id, request.fromUser)
+                }
               />
               <IoIosClose
                 className="x-icon"
-                onClick={() => handleReject(request.id)}
+                onClick={() =>
+                  rejectFriendRequest(currentUser.id, request.fromUser)
+                }
               />
             </div>
           </div>

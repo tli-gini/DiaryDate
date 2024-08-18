@@ -17,8 +17,6 @@ export default function Navbar() {
   const { currentUser, fetchUserInfo } = UseUserStore();
 
   // user auth state
-  //
-  //
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {

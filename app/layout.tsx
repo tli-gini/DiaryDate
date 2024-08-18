@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar/Navbar";
 import Toastify from "@/components/Alert/Toastify";
 import Footer from "../components/Footer/Footer";
