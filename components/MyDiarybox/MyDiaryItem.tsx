@@ -3,6 +3,7 @@ import "./MyDiaryItem.css";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
+import Image from "next/image";
 
 const MyDiaryItem = () => {
   const { currentUser } = UseUserStore();
@@ -15,7 +16,13 @@ const MyDiaryItem = () => {
     <div className="diary-item-container">
       <div className="diary-item">
         <div className="user-info">
-          <img src={currentUser.profile} alt="img" className="user-profile" />
+          <Image
+            src={currentUser.profile}
+            alt=""
+            className="user-profile"
+            width={60}
+            height={60}
+          />
           <div className="user-name">{currentUser.username}</div>
         </div>
         <div className="diary-item-header">

@@ -15,6 +15,7 @@ import {
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
 import { UseChatStore } from "@/lib/chatStorage";
+import Image from "next/image";
 
 interface FriendRequest {
   id: string;
@@ -64,7 +65,7 @@ const FriendRequest: React.FC = () => {
           <div key={request.id} className="request-item">
             <div className="request-user">
               {/* <FaUser className="request-profile" /> */}
-              <img src={request.profile} alt="img" />
+              <Image src={request.profile} alt="" width={46} height={46} />
               <span className="request-name">{request.displayName}</span>
             </div>
             <div className="check-x-wrapper">

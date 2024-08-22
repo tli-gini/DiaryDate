@@ -6,6 +6,7 @@ import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
 import { UseChatStore } from "@/lib/chatStorage";
+import Image from "next/image";
 
 interface ChatFriend {
   id: string;
@@ -54,7 +55,7 @@ const ChatList = () => {
         {chatFriends.map((chatFriend) => (
           <div key={chatFriend.id} className="friend">
             {/* <FaUser className="friend-profile" /> */}
-            <img src={chatFriend.profile} alt="img" />
+            <Image src={chatFriend.profile} alt="" width={46} height={46} />
             <div className="friend-name">
               <span>{chatFriend.displayName}</span>
               <p>Last message...</p>

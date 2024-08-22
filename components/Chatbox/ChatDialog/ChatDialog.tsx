@@ -14,6 +14,7 @@ import { FaUser } from "react-icons/fa6";
 import { IoIosImage } from "react-icons/io";
 import { IoIosHappy } from "react-icons/io";
 import { IoIosSend } from "react-icons/io";
+import Image from "next/image";
 
 const ChatDialog = () => {
   return (

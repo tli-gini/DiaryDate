@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 interface User {
   id: string;
@@ -50,7 +51,13 @@ const Postbox = () => {
         <div key={user.id} className="diary-item">
           <div className="user-info-wrapper">
             <div className="user-info">
-              <img src={user.profile} alt="" className="user-profile" />
+              <Image
+                src={user.profile}
+                alt=""
+                className="user-profile"
+                width={60}
+                height={60}
+              />
               <div className="user-name">{user.username}</div>
             </div>
 
