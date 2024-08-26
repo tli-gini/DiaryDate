@@ -59,7 +59,8 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 85vh;
+  padding-top: 66px;
+  min-height: calc(100vh - 66px);
 }
 
 .page-background {
@@ -74,9 +75,9 @@ a {
   display: flex;
   background-color: var(--color-background);
   justify-content: center;
-  min-height: 85vh;
+  height: 100vh;
   color: var(--color-primary);
-  padding-top: 60px;
+  padding-top: 160px;
   font-family: "Kalam", cursive;
   font-size: 24px;
   font-weight: 500;

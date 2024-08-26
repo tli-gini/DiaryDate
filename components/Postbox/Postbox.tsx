@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Postbox.css";
 import { IoPersonAdd } from "react-icons/io5";
 import { IoIosPaperPlane } from "react-icons/io";
-import { IoIosPeople } from "react-icons/io";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
@@ -103,10 +102,7 @@ const Postbox = () => {
               <div className="user-name">{user.username}</div>
             </div>
             {friendState[user.id] === "friend" ? (
-              <div className="icon-wrapper icon-friend-wrapper">
-                <IoIosPeople className="friend-icon" />
-                <span>好友</span>
-              </div>
+              <></>
             ) : friendState[user.id] === "requested" ? (
               <div className="icon-wrapper icon-friend-wrapper">
                 <IoIosPaperPlane className="add-icon" />
@@ -126,9 +122,6 @@ const Postbox = () => {
             <div className="diary-item-title">
               <h2> post.title</h2>
             </div>
-            {/* <div className="deletePost">
-            <button>Delete</button>
-          </div> */}
           </div>
           <div className="postTextContainer"> post.postText latest </div>
         </div>
