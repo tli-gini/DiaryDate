@@ -6,7 +6,6 @@ import { IoIosPeople } from "react-icons/io";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
-import { toast } from "react-toastify";
 import Image from "next/image";
 
 interface User {
@@ -15,13 +14,17 @@ interface User {
   profile: string;
 }
 
+interface FriendState {
+  [key: string]: "notFriend" | "requested" | "friend";
+}
+
 const Postbox = () => {
-  const [addFriend, setAddFriend] = useState();
   const [users, setUsers] = useState<User[]>([]);
+  const [friendState, setFriendState] = useState<FriendState>({});
   const { currentUser, sendFriendRequest } = UseUserStore();
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchUsersAndStates = async () => {
       const usersCollection = collection(db, "users");
       const usersSnapshot = await getDocs(usersCollection);
       const usersList = usersSnapshot.docs
@@ -36,10 +39,49 @@ const Postbox = () => {
         .filter((user) => user.id !== currentUser?.id);
 
       setUsers(usersList as User[]);
+
+      // Fetch ownRequests
+      const ownRequestsRef = collection(
+        db,
+        "users",
+        currentUser.id,
+        "ownRequests"
+      );
+      const ownRequestsSnapshot = await getDocs(ownRequestsRef);
+      const ownRequests = ownRequestsSnapshot.docs.map((doc) => doc.id);
+      // Fetch friends
+      const friendsRef = collection(db, "users", currentUser.id, "friends");
+      const friendsSnapshot = await getDocs(friendsRef);
+      const friends = friendsSnapshot.docs.map((doc) => doc.id);
+
+      //
+      const states: FriendState = {};
+      usersList.forEach((user) => {
+        if (friends.includes(user.id)) {
+          states[user.id] = "friend";
+        } else if (ownRequests.includes(user.id)) {
+          states[user.id] = "requested";
+        } else {
+          states[user.id] = "notFriend";
+        }
+      });
+
+      setFriendState(states);
     };
 
-    fetchUsers();
+    fetchUsersAndStates();
   }, [currentUser]);
+
+  const handleSendFriendRequest = async (targetUserId: string) => {
+    if (!currentUser?.id) return;
+
+    try {
+      await sendFriendRequest(currentUser.id, targetUserId);
+      setFriendState((prev) => ({ ...prev, [targetUserId]: "requested" }));
+    } catch (error) {
+      console.error("Error sending friend request:", error);
+    }
+  };
 
   if (!currentUser) {
     return null;
@@ -60,28 +102,25 @@ const Postbox = () => {
               />
               <div className="user-name">{user.username}</div>
             </div>
-
-            {addFriend ? (
-              <div
-                className="icon-wrapper icon-friend-wrapper"
-                // onClick={() => setAddFriend((prev) => !prev)}
-              >
+            {friendState[user.id] === "friend" ? (
+              <div className="icon-wrapper icon-friend-wrapper">
+                <IoIosPeople className="friend-icon" />
+                <span>好友</span>
+              </div>
+            ) : friendState[user.id] === "requested" ? (
+              <div className="icon-wrapper icon-friend-wrapper">
                 <IoIosPaperPlane className="add-icon" />
                 <span>已邀請</span>
               </div>
             ) : (
               <div
                 className="icon-wrapper"
-                onClick={() => sendFriendRequest(currentUser.id, user.id)}
+                onClick={() => handleSendFriendRequest(user.id)}
               >
                 <IoPersonAdd className="add-icon" />
                 <span>加朋友</span>
               </div>
             )}
-            {/* <div className="icon-wrapper icon-friend-wrapper">
-            <IoIosPeople className="friend-icon" />
-            <span>好友</span>
-          </div> */}
           </div>
           <div className="diary-item-header">
             <div className="diary-item-title">
@@ -91,7 +130,7 @@ const Postbox = () => {
             <button>Delete</button>
           </div> */}
           </div>
-          <div className="postTextContainer"> post.postText </div>
+          <div className="postTextContainer"> post.postText latest </div>
         </div>
       ))}
     </div>
