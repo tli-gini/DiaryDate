@@ -7,6 +7,16 @@
   flex-direction: column;
 }
 
+.no-chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .no-chat-p {
+    color: var(--color-primary);
+  }
+}
+
 .top {
   padding: 20px;
   display: flex;
@@ -23,9 +33,10 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      padding: 10px;
-      color: var(--color-background);
-      background-color: var(--color-secondary);
+      object-fit: cover;
+      // padding: 10px;
+      // color: var(--color-background);
+      // background-color: var(--color-secondary);
     }
 
     .texts {
@@ -65,7 +76,7 @@
   gap: 20px;
 
   .message {
-    max-width: 70%;
+    max-width: 50%;
     display: flex;
     gap: 20px;
 
@@ -142,7 +153,7 @@
     position: relative;
 
     .emoji-picker-wrapper {
-      display: none;
+      // display: none;
       position: absolute;
       bottom: 50px;
       left: 0;

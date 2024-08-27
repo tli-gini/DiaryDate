@@ -3,11 +3,22 @@ import React from "react";
 import UserInfo from "./UserInfo/UserInfo";
 import ChatList from "./ChatList/ChatList";
 
-const FriendSection = () => {
+interface ChatFriend {
+  id: string;
+  displayName: string;
+  lastMessage: string;
+  profile: string;
+}
+
+interface FriendSectionProps {
+  onSelectFriend: (targetFriend: ChatFriend) => void;
+}
+
+const FriendSection: React.FC<FriendSectionProps> = ({ onSelectFriend }) => {
   return (
     <div className="friend-list">
       <UserInfo />
-      <ChatList />
+      <ChatList onSelectFriend={onSelectFriend} />
     </div>
   );
 };

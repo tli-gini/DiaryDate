@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ChatDialog from "@/components/Chatbox/ChatDialog/ChatDialog";
 import FriendSection from "@/components/Chatbox/FriendSection/FriendSection";
 import FriendRequest from "@/components/Chatbox/FriendRequest/FriendRequest";
@@ -8,27 +8,43 @@ import Diarybox from "@/components/NewDiarybox/DiaryButton";
 import "./chatroom.css";
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "@/firebase/config.js";
+import { auth } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
+
+interface ChatFriend {
+  id: string;
+  displayName: string;
+  lastMessage: string;
+  profile: string;
+}
 
 const Chatroom = () => {
   const { currentUser, isLoading, fetchUserInfo } = UseUserStore();
+  const [selectedFriend, setSelectedFriend] = useState<ChatFriend | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userLogin) => {
-      console.log("uid: ", userLogin?.uid); // get uid
-      fetchUserInfo(userLogin?.uid);
+      console.log("uid: ", userLogin?.uid);
+      if (userLogin) {
+        fetchUserInfo(userLogin.uid);
+      } else {
+        router.push("/user");
+      }
     });
 
     return () => {
       unsubscribe();
     };
-  }, [fetchUserInfo]);
+  }, [fetchUserInfo, router]);
 
-  if (!isLoading && !currentUser) {
-    router.push("/user");
-  }
+  const handleSelectFriend = (targetFriend: ChatFriend) => {
+    setSelectedFriend(targetFriend);
+  };
+
+  // if (!isLoading && !currentUser) {
+  //   router.push("/user");
+  // }
 
   if (isLoading) return <div className="loading">Loading...</div>;
 
@@ -37,8 +53,8 @@ const Chatroom = () => {
       <Chatbox />
       <Diarybox />
       <div className="chatroom-container ">
-        <FriendSection />
-        <ChatDialog />
+        <FriendSection onSelectFriend={handleSelectFriend} />
+        <ChatDialog selectedFriend={selectedFriend} />
         <FriendRequest />
       </div>
     </div>

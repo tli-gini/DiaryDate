@@ -24,6 +24,8 @@ const Postbox = () => {
 
   useEffect(() => {
     const fetchUsersAndStates = async () => {
+      if (!currentUser?.id) return;
+
       const usersCollection = collection(db, "users");
       const usersSnapshot = await getDocs(usersCollection);
       const usersList = usersSnapshot.docs
@@ -74,11 +76,13 @@ const Postbox = () => {
   const handleSendFriendRequest = async (targetUserId: string) => {
     if (!currentUser?.id) return;
 
+    // 先切換成已邀請 for UI
+    setFriendState((prev) => ({ ...prev, [targetUserId]: "requested" }));
     try {
       await sendFriendRequest(currentUser.id, targetUserId);
-      setFriendState((prev) => ({ ...prev, [targetUserId]: "requested" }));
     } catch (error) {
       console.error("Error sending friend request:", error);
+      setFriendState((prev) => ({ ...prev, [targetUserId]: "notFriend" }));
     }
   };
 
