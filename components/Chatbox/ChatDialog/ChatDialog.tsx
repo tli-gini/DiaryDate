@@ -43,7 +43,11 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [text, setText] = useState("");
   const [img, setImg] = useState<File | null>(null);
+
   const [showEmoji, setShowEmoji] = useState(false);
+  const emojiPickerRef = useRef<HTMLDivElement>(null);
+  const emojiButtonRef = useRef<HTMLDivElement>(null);
+
   const [messageId, setMessageId] = useState<string | null>(null);
   const { currentUser } = UseUserStore();
 
@@ -138,6 +142,38 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
     setText((prev) => prev + emojiObject.emoji);
   }, []);
 
+  // 點擊 emojiPicker 外部關閉
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        showEmoji &&
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target as Node) &&
+        emojiButtonRef.current &&
+        !emojiButtonRef.current.contains(event.target as Node)
+      ) {
+        setShowEmoji(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showEmoji]);
+
+  // Toggle emoji picker
+  const toggleEmojiPicker = useCallback(() => {
+    setShowEmoji((prev) => !prev);
+  }, []);
+
+  // Enter 發送訊息
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  };
+
   if (!selectedFriend) {
     return (
       <div className="chat-dialog no-chat">
@@ -183,7 +219,16 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
                 />
               )}
               <p>{message.text}</p>
-              <span>{new Date(message.date).toLocaleString()}</span>
+              <span>
+                {new Date(message.date).toLocaleString("zh-TW", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
+                })}
+              </span>
             </div>
           </div>
         ))}
@@ -208,14 +253,12 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
           className="msg-input"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown} // Enter 發送訊息
         />
-        <div className="emoji">
-          <IoIosHappy
-            className="happy-icon"
-            onClick={() => setShowEmoji(!showEmoji)}
-          />
+        <div className="emoji" ref={emojiButtonRef}>
+          <IoIosHappy className="happy-icon" onClick={toggleEmojiPicker} />
           {showEmoji && (
-            <div className="emoji-picker-wrapper">
+            <div className="emoji-picker-wrapper" ref={emojiPickerRef}>
               <EmojiPicker onEmojiClick={handleEmojiClick} />
             </div>
           )}
