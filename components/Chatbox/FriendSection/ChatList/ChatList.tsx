@@ -90,22 +90,24 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectFriend }) => {
           ></input>
         </div>
       </div>
-      <div className="friend-item">
-        {/* friend info and chatFriend */}
-        {chatFriends.map((targetFriend) => (
-          <div
-            key={targetFriend.id}
-            className="friend"
-            onClick={() => onSelectFriend(targetFriend)}
-          >
-            {/* <FaUser className="friend-profile" /> */}
-            <Image src={targetFriend.profile} alt="" width={46} height={46} />
-            <div className="friend-name">
-              <span>{targetFriend.displayName}</span>
-              <p>Last message...</p>
+      <div className="friend-item-wrapper">
+        <div className="friend-item">
+          {/* friend info and chatFriend */}
+          {chatFriends.map((targetFriend) => (
+            <div
+              key={targetFriend.id}
+              className="friend"
+              onClick={() => onSelectFriend(targetFriend)}
+            >
+              {/* <FaUser className="friend-profile" /> */}
+              <Image src={targetFriend.profile} alt="" width={46} height={46} />
+              <div className="friend-name">
+                <span>{targetFriend.displayName}</span>
+                <p>Last message...</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
