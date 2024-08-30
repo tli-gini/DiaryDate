@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./MyDiaryItem.css";
+import "./MyDiaryList.css";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
 import Image from "next/image";
 
-const MyDiaryItem = () => {
+const MyDiaryList = () => {
   const { currentUser } = UseUserStore();
 
   if (!currentUser) {
@@ -39,4 +39,4 @@ const MyDiaryItem = () => {
   );
 };
 
-export default MyDiaryItem;
+export default MyDiaryList;

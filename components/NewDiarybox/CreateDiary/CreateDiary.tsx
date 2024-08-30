@@ -28,10 +28,10 @@ const CreateDiary = () => {
 
   return (
     <div className="diary-container">
-      <h2>Create My Diary</h2>
       <div className="input-wrapper">
         <label>標題：</label>
         <input
+          className="title-input"
           placeholder=" ..."
           onChange={(event) => {
             setTitle(event.target.value);
@@ -41,6 +41,7 @@ const CreateDiary = () => {
       <div className="input-wrapper">
         <label>內文：</label>
         <textarea
+          className="text-input"
           placeholder=" ..."
           onChange={(event) => {
             setDiaryText(event.target.value);

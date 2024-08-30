@@ -1,5 +1,15 @@
 .calendar-container {
-  width: 300px;
+  flex: 1;
   padding: 20px;
   border-right: 1.5px solid var(--color-prim-background);
 }
+
+// .Mui-selected {
+//   color: #fff !important;
+//   background-color: var(--color-primary) !important;
+//   font-weight: 500;
+// }
+
+// .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root {
+//   color: var(--color-secondary) !important;
+// }

@@ -33,7 +33,7 @@
 }
 
 .friend-item-wrapper {
-  max-height: 430px;
+  max-height: 50vh;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -41,7 +41,6 @@
 
 .friend-item {
   padding: 10px 10px 30px 10px;
-  max-height: 540px;
 
   .friend {
     display: flex;

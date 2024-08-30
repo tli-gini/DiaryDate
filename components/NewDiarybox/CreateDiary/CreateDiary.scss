@@ -1,38 +1,38 @@
 .diary-container {
   padding: 20px;
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
 
-  h2 {
-    text-align: center;
-    font-weight: 500;
-  }
-
   .input-wrapper {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
 
     label {
-      font-size: 18px;
+      font-size: 16px;
+      color: var(--color-primary);
     }
 
     input,
     textarea {
-      font-size: 16px;
       border: none;
-      border-radius: 2px;
+      border-radius: 5px;
       padding: 5px;
       margin-top: 10px;
+      color: var(--color-secondary);
+      background-color: var(--color-background);
     }
 
-    input {
-      height: 50px;
+    .title-input {
+      height: 40px;
+      font-size: 14px;
     }
 
-    textarea {
-      height: 300px;
+    .text-input {
+      min-height: 300px;
+      font-size: 14px;
+      resize: vertical;
     }
   }
 
@@ -40,6 +40,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
 
     button {
       width: 140px;
@@ -48,7 +49,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 16px;
       color: var(--color-white);
       background-color: var(--color-primary);
     }

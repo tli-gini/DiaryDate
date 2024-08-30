@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Chatbox from "@/components/Chatbox/ChatButton";
 import Diarybox from "@/components/NewDiarybox/DiaryButton";
-import MyDiaryItem from "@/components/MyDiarybox/MyDiaryItem";
+import MyDiarybox from "@/components/MyDiarybox/DiaryDisplayButton";
+import MyDiaryList from "@/components/MyDiarybox/MyDiaryList/MyDiaryList";
+import MyDiaryCalendar from "@/components/MyDiarybox/MyDiaryCalendar/MyDiaryCalendar";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
@@ -34,8 +36,10 @@ const MyDiary = () => {
     <div className="container page-background my-diary-page">
       <Chatbox />
       <Diarybox />
+      <MyDiarybox />
       <div className="my-diary-container">
-        <MyDiaryItem />
+        <MyDiaryList />
+        <MyDiaryCalendar />
       </div>
     </div>
   );
