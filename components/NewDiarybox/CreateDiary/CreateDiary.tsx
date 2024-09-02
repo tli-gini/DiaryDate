@@ -2,10 +2,21 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import "./CreateDiary.css";
 import { db } from "@/firebase/config.js";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { UseUserStore } from "@/lib/userStorage";
+import { toast } from "react-toastify";
 
-const CreateDiary = () => {
+interface DiaryEntry {
+  title: string;
+  diaryText: string;
+  author: {
+    name: string;
+    id: string;
+  };
+  createdAt: ReturnType<typeof serverTimestamp>;
+}
+
+const CreateDiary: React.FC = () => {
   const { currentUser } = UseUserStore();
   const router = useRouter();
   const [title, setTitle] = useState("");
@@ -14,12 +25,28 @@ const CreateDiary = () => {
   const postsCollectionRef = collection(db, "posts");
 
   const postDiary = async () => {
-    await addDoc(postsCollectionRef, {
-      title,
-      diaryText,
-      author: { name: currentUser.username, id: currentUser.uid },
-    });
-    router.push("/my-diary");
+    if (!diaryText) {
+      return;
+    }
+
+    try {
+      const newDiary: DiaryEntry = {
+        title,
+        diaryText,
+        author: {
+          name: currentUser?.username || "Unknown",
+          id: currentUser?.uid || "",
+        },
+        createdAt: serverTimestamp(),
+      };
+
+      await addDoc(postsCollectionRef, newDiary);
+      toast.success("成功發布日記！");
+      router.push("/my-diary");
+    } catch (error) {
+      console.error("Error posting diary: ", error);
+      toast.error("發布日記發生錯誤，請再試一次");
+    }
   };
 
   if (!currentUser) {
@@ -33,9 +60,8 @@ const CreateDiary = () => {
         <input
           className="title-input"
           placeholder=" ..."
-          onChange={(event) => {
-            setTitle(event.target.value);
-          }}
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
         />
       </div>
       <div className="input-wrapper">
@@ -43,9 +69,8 @@ const CreateDiary = () => {
         <textarea
           className="text-input"
           placeholder=" ..."
-          onChange={(event) => {
-            setDiaryText(event.target.value);
-          }}
+          value={diaryText}
+          onChange={(event) => setDiaryText(event.target.value)}
         />
       </div>
       <div className="btn-wrapper">

@@ -33,7 +33,8 @@ const MyDiaryList = () => {
             <button>Delete</button>
           </div> */}
         </div>
-        <div className="postTextContainer"> post.postText </div>
+        <div className="postTextContainer">post.postText</div>
+        <div>post.createdAt.toDate().toLocaleString()</div>
       </div>
     </div>
   );
