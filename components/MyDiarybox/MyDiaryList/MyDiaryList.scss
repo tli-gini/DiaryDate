@@ -6,6 +6,7 @@
 .diary-item {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 50vw;
   min-height: 40vh;
   padding: 20px;
@@ -21,11 +22,32 @@
     .title-text {
       font-size: 16px;
       font-weight: 400;
+      color: var(--color-primary);
     }
   }
 
-  .realtime-div {
-    font-size: 12px;
+  .diary-item-content {
+    margin-bottom: 20px;
+  }
+
+  .diary-item-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    .realtime-div {
+      font-size: 12px;
+      color: var(--color-sec-background);
+    }
+
+    .delete-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--color-sec-background);
+      cursor: pointer;
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
   }
 }
 

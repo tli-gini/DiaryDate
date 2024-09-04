@@ -11,6 +11,8 @@ import {
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
 import Image from "next/image";
+import { IoIosTrash } from "react-icons/io";
+import ReactMarkdown from "react-markdown";
 
 interface MyDiary {
   id: string;
@@ -80,35 +82,42 @@ const MyDiaryList: React.FC = () => {
     <div className="diary-item-container">
       {myDiary.map((post) => (
         <div key={post.id} className="diary-item">
-          <div className="user-info">
-            <Image
-              src={currentUser.profile}
-              alt=""
-              className="user-profile"
-              width={60}
-              height={60}
-            />
-            <div className="user-name">{currentUser.username}</div>
-          </div>
-          <div className="diary-item-header">
+          <div className="diary-item-main">
+            <div className="user-info">
+              <Image
+                src={currentUser.profile}
+                alt=""
+                className="user-profile"
+                width={60}
+                height={60}
+              />
+              <div className="user-name">{currentUser.username}</div>
+            </div>
             <div className="diary-item-title">
               <div className="title-text">{post.title}</div>
             </div>
-            <div className="deletePost">
-              <button onClick={() => deletePost(post.id)}>Delete</button>
+            <div className="diary-item-content">
+              <ReactMarkdown>{post.diaryText}</ReactMarkdown>
             </div>
           </div>
-          <div className="postTextContainer">{post.diaryText}</div>
-          <div className="realtime-div">
-            發布時間：
-            {post.createdAt.toDate().toLocaleString("zh-TW", {
-              year: "numeric",
-              month: "numeric",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-              hour12: true,
-            })}
+
+          <div className="diary-item-bottom">
+            <div className="realtime-div">
+              發布時間：
+              {post.createdAt.toDate().toLocaleString("zh-TW", {
+                year: "numeric",
+                month: "numeric",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              })}
+            </div>
+
+            <IoIosTrash
+              onClick={() => deletePost(post.id)}
+              className="delete-icon"
+            />
           </div>
         </div>
       ))}
