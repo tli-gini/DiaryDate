@@ -8,3 +8,15 @@
   color: var(--color-secondary);
   margin: 30px 0;
 }
+
+.Mui-selected {
+  color: #fff !important;
+  background-color: var(--color-primary) !important;
+  border: none !important;
+}
+
+.css-23p0if-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
+  background-color: var(--color-prim-background);
+  border: none !important;
+  color: #fff !important;
+}

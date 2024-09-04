@@ -28,6 +28,7 @@ const NewDiary = () => {
 
   if (!isLoading && !currentUser) {
     router.push("/user");
+    return <div className="loading">Loading...</div>;
   }
 
   if (isLoading) return <div className="loading">Loading...</div>;

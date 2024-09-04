@@ -35,7 +35,7 @@ const CreateDiary: React.FC = () => {
         diaryText,
         author: {
           name: currentUser?.username || "Unknown",
-          id: currentUser?.uid || "",
+          id: currentUser?.id || "",
         },
         createdAt: serverTimestamp(),
       };
@@ -65,7 +65,7 @@ const CreateDiary: React.FC = () => {
         />
       </div>
       <div className="input-wrapper">
-        <label>內文：</label>
+        <label>內文： *</label>
         <textarea
           className="text-input"
           placeholder=" ..."
