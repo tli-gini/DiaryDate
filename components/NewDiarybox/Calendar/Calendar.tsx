@@ -19,7 +19,7 @@ const Calendar: React.FC<CalendarProps> = ({ value, onChange }) => {
         <Typography>
           {value
             ? `把日記存放在：${value.format("YYYY/MM/DD")}`
-            : "選擇一個日期吧！"}
+            : "選擇一個日期吧！ *"}
         </Typography>
       </LocalizationProvider>
     </div>

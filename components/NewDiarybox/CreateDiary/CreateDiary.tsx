@@ -15,6 +15,7 @@ interface DiaryEntry {
     id: string;
   };
   createdAt: ReturnType<typeof serverTimestamp>;
+  diaryDate: string;
 }
 
 interface CreateDiaryProps {
@@ -40,16 +41,16 @@ const CreateDiary: React.FC<CreateDiaryProps> = ({ selectedDate }) => {
 
     try {
       const formattedDate = selectedDate.format("YYYY/MM/DD");
-      const fullTitle = title ? `${formattedDate} - ${title}` : formattedDate;
 
       const newDiary: DiaryEntry = {
-        title: fullTitle,
+        title,
         diaryText,
         author: {
           name: currentUser?.username || "Unknown",
           id: currentUser?.id || "",
         },
         createdAt: serverTimestamp(),
+        diaryDate: formattedDate,
       };
 
       await addDoc(postsCollectionRef, newDiary);
@@ -81,7 +82,7 @@ const CreateDiary: React.FC<CreateDiaryProps> = ({ selectedDate }) => {
         <label>內文： *</label>
         <textarea
           className="text-input"
-          placeholder="寫下你的日記..."
+          placeholder=" 寫下你的日記..."
           value={diaryText}
           onChange={(event) => setDiaryText(event.target.value)}
           disabled={!selectedDate}

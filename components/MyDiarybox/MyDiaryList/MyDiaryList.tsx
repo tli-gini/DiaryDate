@@ -25,6 +25,7 @@ interface MyDiary {
   createdAt: {
     toDate: () => Date;
   };
+  diaryDate: string;
 }
 
 const MyDiaryList: React.FC = () => {
@@ -40,11 +41,14 @@ const MyDiaryList: React.FC = () => {
   const fetchMyDiary = async () => {
     try {
       const postsCollectionRef = collection(db, "posts");
+
       const q = query(
         postsCollectionRef,
         where("author.id", "==", currentUser?.id)
       );
+
       const querySnapshot = await getDocs(q);
+
       const diaries = querySnapshot.docs.map(
         (doc) =>
           ({
@@ -94,7 +98,7 @@ const MyDiaryList: React.FC = () => {
               <div className="user-name">{currentUser.username}</div>
             </div>
             <div className="diary-item-title">
-              <div className="title-text">{post.title}</div>
+              <div className="title-text">{`${post.diaryDate} - ${post.title}`}</div>
             </div>
             <div className="diary-item-content">
               <ReactMarkdown>{post.diaryText}</ReactMarkdown>
