@@ -5,6 +5,7 @@ import { db } from "@/firebase/config.js";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { UseUserStore } from "@/lib/userStorage";
 import { toast } from "react-toastify";
+import { Dayjs } from "dayjs";
 
 interface DiaryEntry {
   title: string;
@@ -16,7 +17,11 @@ interface DiaryEntry {
   createdAt: ReturnType<typeof serverTimestamp>;
 }
 
-const CreateDiary: React.FC = () => {
+interface CreateDiaryProps {
+  selectedDate: Dayjs | null;
+}
+
+const CreateDiary: React.FC<CreateDiaryProps> = ({ selectedDate }) => {
   const { currentUser } = UseUserStore();
   const router = useRouter();
   const [title, setTitle] = useState("");
@@ -25,13 +30,20 @@ const CreateDiary: React.FC = () => {
   const postsCollectionRef = collection(db, "posts");
 
   const postDiary = async () => {
+    if (!selectedDate) {
+      return;
+    }
+
     if (!diaryText) {
       return;
     }
 
     try {
+      const formattedDate = selectedDate.format("YYYY/MM/DD");
+      const fullTitle = title ? `${formattedDate} - ${title}` : formattedDate;
+
       const newDiary: DiaryEntry = {
-        title,
+        title: fullTitle,
         diaryText,
         author: {
           name: currentUser?.username || "Unknown",
@@ -62,15 +74,17 @@ const CreateDiary: React.FC = () => {
           placeholder=" ..."
           value={title}
           onChange={(event) => setTitle(event.target.value)}
+          disabled={!selectedDate}
         />
       </div>
       <div className="input-wrapper">
         <label>內文： *</label>
         <textarea
           className="text-input"
-          placeholder=" ..."
+          placeholder="寫下你的日記..."
           value={diaryText}
           onChange={(event) => setDiaryText(event.target.value)}
+          disabled={!selectedDate}
         />
       </div>
       <div className="btn-wrapper">

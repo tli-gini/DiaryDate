@@ -6,15 +6,20 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { Dayjs } from "dayjs";
 import Typography from "@mui/material/Typography";
 
-const Calendar = () => {
-  const [value, setValue] = React.useState<Dayjs | null>(null);
+interface CalendarProps {
+  value: Dayjs | null;
+  onChange: (newValue: Dayjs | null) => void;
+}
 
+const Calendar: React.FC<CalendarProps> = ({ value, onChange }) => {
   return (
     <div className="calendar-container">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateCalendar views={["day"]} value={value} onChange={setValue} />
+        <DateCalendar views={["day"]} value={value} onChange={onChange} />
         <Typography>
-          value: {value == null ? "null" : value.format("YYYY/MM/DD - ")}
+          {value
+            ? `把日記存放在：${value.format("YYYY/MM/DD")}`
+            : "選擇一個日期吧！"}
         </Typography>
       </LocalizationProvider>
     </div>

@@ -7,13 +7,14 @@ import Calendar from "@/components/NewDiarybox/Calendar/Calendar";
 import "./new-diary.css";
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "@/firebase/config.js";
-import { addDoc, collection } from "firebase/firestore";
+import { auth } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
+import { Dayjs } from "dayjs";
 
 const NewDiary = () => {
   const { currentUser, isLoading, fetchUserInfo } = UseUserStore();
   const router = useRouter();
+  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userLogin) => {
@@ -38,8 +39,8 @@ const NewDiary = () => {
       <Chatbox />
       <Diarybox />
       <div className="new-diary-container">
-        <Calendar />
-        <CreateDiary />
+        <Calendar value={selectedDate} onChange={setSelectedDate} />
+        <CreateDiary selectedDate={selectedDate} />
       </div>
     </div>
   );
