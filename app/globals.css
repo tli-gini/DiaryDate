@@ -3,6 +3,7 @@
 :root {
   --color-primary: #b64242;
   --color-prim-background: rgba(182, 66, 66, 0.3);
+  --color-prim: rgba(182, 66, 66, 0.5);
   --color-secondary: #764444;
   --color-sec-background: #764444a0;
   --color-background: #fcefef;

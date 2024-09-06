@@ -61,6 +61,7 @@ const CalendarItem: React.FC<CalendarItemProps> = ({
     <div className="calendar-container">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
+          views={["year", "month", "day"]}
           value={selectedDate}
           onChange={onDateChange}
           slots={{

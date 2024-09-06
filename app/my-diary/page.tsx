@@ -1,6 +1,6 @@
 "use client";
 import "./my-diary.css";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Chatbox from "@/components/Chatbox/ChatButton";
 import Diarybox from "@/components/NewDiarybox/DiaryButton";
@@ -8,12 +8,13 @@ import MyDiarybox from "@/components/MyDiarybox/DiaryDisplayButton";
 import MyDiaryList from "@/components/MyDiarybox/MyDiaryList/MyDiaryList";
 import MyDiaryCalendar from "@/components/MyDiarybox/MyDiaryCalendar/MyDiaryCalendar";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "@/firebase/config.js";
+import { auth } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
 
 const MyDiary = () => {
   const { currentUser, isLoading, fetchUserInfo } = UseUserStore();
   const router = useRouter();
+  const [isListView, setIsListView] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userLogin) => {
@@ -26,6 +27,10 @@ const MyDiary = () => {
     };
   }, [fetchUserInfo]);
 
+  const handleToggle = () => {
+    setIsListView((prev) => !prev);
+  };
+
   if (!isLoading && !currentUser) {
     router.push("/user");
     return <div className="loading">Loading...</div>;
@@ -37,10 +42,9 @@ const MyDiary = () => {
     <div className="container page-background my-diary-page">
       <Chatbox />
       <Diarybox />
-      <MyDiarybox />
+      <MyDiarybox isListView={isListView} handleToggle={handleToggle} />
       <div className="my-diary-container">
-        <MyDiaryList />
-        <MyDiaryCalendar />
+        {isListView ? <MyDiaryList /> : <MyDiaryCalendar />}
       </div>
     </div>
   );

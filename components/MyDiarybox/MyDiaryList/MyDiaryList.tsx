@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import "./MyDiaryList.css";
 import {
   getDocs,
@@ -80,6 +81,19 @@ const MyDiaryList: React.FC = () => {
 
   if (!currentUser) {
     return null;
+  }
+
+  if (myDiary.length === 0) {
+    return (
+      <div className="no-diary-wrapper">
+        <div className="no-diary-text">還沒有建立日記？</div>
+        <div className="no-diary-btn-div">
+          <Link href="/my-diary/new-diary">
+            <button className="no-diary-btn">開始寫日記吧！</button>
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (

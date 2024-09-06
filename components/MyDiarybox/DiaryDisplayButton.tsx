@@ -1,17 +1,20 @@
 import "./DiaryDisplayButton.css";
-import React, { useState } from "react";
+import React from "react";
 import { IoIosList } from "react-icons/io";
 import { IoIosCalendar } from "react-icons/io";
 
-export default function DiaryDisplayButton() {
-  const [list, setList] = useState(true);
-  const handleToggle = () => {
-    setList((prevList) => !prevList);
-  };
+interface DiaryDisplayButtonProps {
+  isListView: boolean;
+  handleToggle: () => void;
+}
 
+export default function DiaryDisplayButton({
+  isListView,
+  handleToggle,
+}: DiaryDisplayButtonProps) {
   return (
     <div className="toggle-diary-btn" onClick={handleToggle}>
-      {list ? (
+      {isListView ? (
         <IoIosList className="list-icon" />
       ) : (
         <IoIosCalendar className="list-icon" />

@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.diary-item {
+.post-item {
   display: flex;
   flex-direction: column;
   width: 50vw;
@@ -14,11 +14,24 @@
   border-radius: 20px;
   background-color: var(--color-white);
   color: var(--color-secondary);
+  font-size: 14px;
 
-  .diary-item-title {
+  .post-item-title {
     margin-bottom: 10px;
-    h2 {
+    .post-item-title-text {
+      font-size: 16px;
       font-weight: 400;
+      color: var(--color-primary);
+    }
+  }
+
+  .post-item-bottom {
+    display: flex;
+    margin-top: 20px;
+
+    .realtime-div {
+      font-size: 12px;
+      color: var(--color-sec-background);
     }
   }
 }
