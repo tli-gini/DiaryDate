@@ -4,17 +4,9 @@ import { FaUser } from "react-icons/fa6";
 import { IoIosCheckmark } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
 import { IoPersonAdd } from "react-icons/io5";
-import {
-  doc,
-  getDocs,
-  collection,
-  getDoc,
-  setDoc,
-  deleteDoc,
-} from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
-import { UseChatStore } from "@/lib/chatStorage";
 import Image from "next/image";
 
 interface FriendRequest {

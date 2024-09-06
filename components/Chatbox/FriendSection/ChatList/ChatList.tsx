@@ -5,7 +5,6 @@ import { FaUser } from "react-icons/fa6";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
-// import { UseChatStore } from "@/lib/chatStorage";
 import Image from "next/image";
 
 interface ChatFriend {
