@@ -75,7 +75,7 @@ const MyDiaryItem: React.FC<MyDiaryItemProps> = ({ selectedDate }) => {
 
   return (
     <div className="diary-container">
-      <div className="user-info">
+      <div className="user-info-c">
         <Image
           src={currentUser.profile}
           alt=""
@@ -92,7 +92,7 @@ const MyDiaryItem: React.FC<MyDiaryItemProps> = ({ selectedDate }) => {
               <div className="diary-item-title">
                 <div className="title-text">{`${post.diaryDate} - ${post.title}`}</div>
               </div>
-              <div className="postTextContainer">
+              <div className="diary-item-content">
                 <ReactMarkdown>{post.diaryText}</ReactMarkdown>
               </div>
             </div>

@@ -4,6 +4,15 @@
   border-right: 1.5px solid var(--color-prim-background);
 }
 
+.calendar-date {
+  color: var(--color-primary);
+  text-align: center;
+
+  .date-value {
+    font-size: 14px;
+  }
+}
+
 .Mui-selected {
   color: #fff !important;
   background-color: var(--color-primary) !important;

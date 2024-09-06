@@ -4,7 +4,16 @@
   border-right: 1.5px solid var(--color-prim-background);
 }
 
-.MuiPickersDay-root.Mui-selected {
+.diary-date.Mui-selected {
   background-color: var(--color-primary) !important;
   color: white !important;
+}
+
+.diary-date {
+  background-color: var(--color-background) !important;
+  color: var(--color-primary) !important;
+  &:hover {
+    background-color: var(--color-background) !important;
+    color: var(--color-white) !important;
+  }
 }
