@@ -102,7 +102,7 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectFriend }) => {
               <Image src={targetFriend.profile} alt="" width={46} height={46} />
               <div className="friend-name">
                 <span>{targetFriend.displayName}</span>
-                <p>Last message...</p>
+                {/* <p>Last message...</p> */}
               </div>
             </div>
           ))}

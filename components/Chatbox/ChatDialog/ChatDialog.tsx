@@ -223,7 +223,8 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
                   className="msg-img"
                 />
               )}
-              <p>{message.text}</p>
+              {/* prevent the empty <p></p> */}
+              {message.text && <p>{message.text}</p>}
               <span>
                 {new Date(message.date).toLocaleString("zh-TW", {
                   year: "numeric",

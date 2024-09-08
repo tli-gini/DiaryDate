@@ -35,9 +35,6 @@
       height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      // padding: 10px;
-      // color: var(--color-background);
-      // background-color: var(--color-secondary);
     }
 
     .texts {
@@ -183,7 +180,7 @@
     border-radius: 10px;
     cursor: pointer;
     &:hover {
-      color: var(--color-prim-background);
+      color: var(--color-prim);
       background-color: var(--color-white);
     }
 
