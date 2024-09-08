@@ -59,13 +59,18 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
   }, []);
 
   useEffect(() => {
-    if (!currentUser?.id || !selectedFriend?.id) return;
+    if (!currentUser?.id || !selectedFriend?.id) {
+      setMessages([]);
+      return;
+    }
 
     const chatId = [currentUser.id, selectedFriend.id].sort().join("_");
 
     const unsubscribe = onSnapshot(doc(db, "chats", chatId), (doc) => {
       if (doc.exists()) {
-        setMessages(doc.data().messages);
+        setMessages(doc.data().messages || []);
+      } else {
+        setMessages([]);
       }
     });
 
