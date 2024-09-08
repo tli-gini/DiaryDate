@@ -180,3 +180,15 @@ input::placeholder {
     }
   }
 }
+
+// test
+
+.test-account {
+  display: flex;
+  flex-direction: column;
+
+  .test {
+    color: var(--color-prim);
+    font-size: 14px;
+  }
+}

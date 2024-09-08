@@ -43,6 +43,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [text, setText] = useState("");
   const [img, setImg] = useState<File | null>(null);
+  const [fileName, setFileName] = useState("");
 
   const [showEmoji, setShowEmoji] = useState(false);
   const emojiPickerRef = useRef<HTMLDivElement>(null);
@@ -128,6 +129,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
 
       setText("");
       setImg(null);
+      setFileName("");
       setMessageId(uuidv4());
     } catch (error) {
       console.error("Error sending message: ", error);
@@ -137,11 +139,14 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
   // file input
   const handleFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setImg(e.target.files?.[0] || null);
+      const file = e.target.files?.[0];
+      if (file) {
+        setImg(file);
+        setFileName(file.name); // Display file name in input bar
+      }
     },
     []
   );
-
   // emoji click
   const handleEmojiClick = useCallback((emojiObject: { emoji: string }) => {
     setText((prev) => prev + emojiObject.emoji);
@@ -177,6 +182,13 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
     if (e.key === "Enter") {
       handleSend();
     }
+  };
+
+  // updated text
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newText = e.target.value;
+    setText(newText);
+    setFileName(newText);
   };
 
   if (!selectedFriend) {
@@ -257,8 +269,8 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
           type="text"
           placeholder="輸入訊息..."
           className="msg-input"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={fileName}
+          onChange={handleTextChange}
           onKeyDown={handleKeyDown} // Enter 發送訊息
         />
         <div className="emoji" ref={emojiButtonRef}>

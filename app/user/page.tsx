@@ -206,6 +206,11 @@ const User = () => {
         {error && <div className="error-msg">{error}</div>}
         {success && <div className="success-msg">{success}</div>}
 
+        <div className="test-account">
+          <div className="test">帳號：vvv@gmail.com</div>
+          <div className="test">密碼：vvvvvv</div>
+        </div>
+
         <div className="button-div">
           <button type="button" className="sign-in-google-btn">
             <FcGoogle className="sign-in-google-icon" />
