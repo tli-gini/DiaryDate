@@ -147,9 +147,11 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
     },
     []
   );
+
   // emoji click
   const handleEmojiClick = useCallback((emojiObject: { emoji: string }) => {
     setText((prev) => prev + emojiObject.emoji);
+    setFileName((prev) => prev + emojiObject.emoji);
   }, []);
 
   // 點擊 emojiPicker 外部關閉
