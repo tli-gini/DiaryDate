@@ -20,7 +20,7 @@ const User = () => {
   const router = useRouter();
 
   // signup or login
-  const [action, setAction] = useState("註冊");
+  const [action, setAction] = useState("登入");
 
   // profile
   const [profile, setProfile] = useState({
@@ -39,8 +39,8 @@ const User = () => {
 
   //
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("vvv@gmail.com");
+  const [password, setPassword] = useState("vvvvvv");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -206,10 +206,10 @@ const User = () => {
         {error && <div className="error-msg">{error}</div>}
         {success && <div className="success-msg">{success}</div>}
 
-        <div className="test-account">
+        {/* <div className="test-account">
           <div className="test">帳號：vvv@gmail.com</div>
           <div className="test">密碼：vvvvvv</div>
-        </div>
+        </div> */}
 
         <div className="button-div">
           <button type="button" className="sign-in-google-btn">
