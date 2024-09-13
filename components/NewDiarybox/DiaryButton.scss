@@ -21,3 +21,11 @@
   height: 30px;
   color: var(--color-white);
 }
+
+// RWD
+
+@media (min-width: 360px) and (max-width: 600px) {
+  .diary-btn {
+    display: none;
+  }
+}

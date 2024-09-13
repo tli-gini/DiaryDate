@@ -5,7 +5,7 @@ import "./Navbar.css";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
 import { RiLogoutBoxRLine } from "react-icons/ri";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/config";
@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 export default function Navbar() {
   const router = useRouter();
   const { currentUser, fetchUserInfo } = UseUserStore();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // user auth state
   useEffect(() => {
@@ -41,6 +42,11 @@ export default function Navbar() {
     }
   };
 
+  // menu RWD
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav>
       <div className="nav-container">
@@ -63,15 +69,21 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="nav-items">
-          <RxHamburgerMenu className="hamberger-icon" />
+        <div className="nav-items hamburger-icon-div">
+          <RxHamburgerMenu className="hamberger-icon" onClick={toggleMenu} />
         </div>
-        <div className="nav-items">
+        <div className="nav-items main-items">
           <Link href="/diary-share">
             <div className="nav-item">交換日記</div>
           </Link>
           <Link href="/my-diary">
             <div className="nav-item">我的日記</div>
+          </Link>
+          <Link href="/my-diary/new-diary">
+            <div className="nav-item web-hide">寫日記</div>
+          </Link>
+          <Link href="/diary-share/chatroom">
+            <div className="nav-item web-hide">聊天室</div>
           </Link>
           <>
             {currentUser ? (
@@ -89,7 +101,7 @@ export default function Navbar() {
               </Link>
             )}
           </>
-          <IoIosClose className="close-icon" />
+          <IoIosClose className="close-icon" onClick={toggleMenu} />
         </div>
       </div>
     </nav>
