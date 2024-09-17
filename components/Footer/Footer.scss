@@ -12,3 +12,20 @@ footer {
 .footer-text {
   font-family: "Kalam", cursive;
 }
+
+/* RWD */
+
+@media (min-width: 920px) and (max-width: 1200px) {
+}
+@media (min-width: 600px) and (max-width: 920px) {
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  footer {
+    height: 60px;
+  }
+
+  .footer-text {
+    font-family: "Kalam", cursive;
+    font-size: 14px;
+  }
+}

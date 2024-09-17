@@ -208,7 +208,7 @@ input::placeholder {
   }
 
   .sign-in-google-btn {
-    font-size: 14px;
+    font-size: 14px !important;
     padding: 7px 9px;
 
     .sign-in-google-icon {
@@ -221,10 +221,10 @@ input::placeholder {
   }
 
   .button-to-homepage {
-    font-size: 14px;
+    font-size: 14px !important;
     padding: 8px 26px;
     &:hover {
-      border: 1.5px solid var(--color-primary);
+      border: 1.5px solid var(--color-primary) !important;
       padding: 8px 26px;
     }
   }

@@ -72,13 +72,12 @@ nav {
   .close-icon {
     display: none;
     cursor: pointer;
-    padding: 10px;
-    width: 44px;
-    height: 44px;
+    // padding: 10px;
+    width: 30px;
+    height: 30px;
     color: var(--color-primary);
     background-color: var(--color-background);
     align-items: center;
-    border-radius: 50px;
   }
 }
 
@@ -114,18 +113,19 @@ nav {
     display: flex;
     align-items: start;
     justify-content: space-between;
-    margin: 0px 0px 0px 6px;
+    margin: 0 0 0 10px;
     width: 100vw;
   }
 
   .hamberger-icon-div {
     background-color: white;
-    margin: 5px 0 0 0 !important;
+    margin-right: 10px !important;
   }
 
   .hamberger-icon {
     display: block !important;
     background-color: var(--color-white) !important;
+    margin: 12px 10px 0 0 !important;
 
     &:hover {
       color: var(--color-prim-background);
@@ -134,19 +134,15 @@ nav {
 
   .main-items {
     padding: 20px 30px;
-    display: none !important;
+    display: none;
     height: 100vh;
     flex-direction: column;
     background-color: var(--color-background);
   }
 
-  // .show {
-  //   display: block !important;
-  // }
-
-  // .hide {
-  //   display: none !important;
-  // }
+  .show {
+    display: flex !important;
+  }
 
   .nav-items {
     a {

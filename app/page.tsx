@@ -12,7 +12,10 @@ export default function Home() {
       <div className="welcome">
         <Image src="/img/welcome.png" alt="Welcome" width={1908} height={608} />
       </div>
-      <div className="welcome-text">Share Your Diary, Meet Your Date ; )</div>
+      <div className="welcome-text">
+        <span className="up-span">Share Your Diary, </span>
+        <span className="down-span">Meet Your Date ; )</span>
+      </div>
       <div className="homepage-content">
         <div className="start-btn-div">
           <Link href="/my-diary/new-diary">

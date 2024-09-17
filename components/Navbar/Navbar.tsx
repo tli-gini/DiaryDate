@@ -43,8 +43,12 @@ export default function Navbar() {
   };
 
   // menu RWD
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+  const showMenu = () => {
+    setMenuOpen(true);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
   };
 
   return (
@@ -70,9 +74,11 @@ export default function Navbar() {
         </Link>
 
         <div className="nav-items hamburger-icon-div">
-          <RxHamburgerMenu className="hamberger-icon" onClick={toggleMenu} />
+          {!menuOpen && (
+            <RxHamburgerMenu className="hamberger-icon" onClick={showMenu} />
+          )}
         </div>
-        <div className="nav-items main-items">
+        <div className={`nav-items main-items ${menuOpen ? "show" : ""}`}>
           <Link href="/diary-share">
             <div className="nav-item">交換日記</div>
           </Link>
@@ -101,7 +107,7 @@ export default function Navbar() {
               </Link>
             )}
           </>
-          <IoIosClose className="close-icon" onClick={toggleMenu} />
+          <IoIosClose className="close-icon" onClick={closeMenu} />
         </div>
       </div>
     </nav>
