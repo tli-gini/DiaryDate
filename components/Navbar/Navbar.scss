@@ -72,7 +72,6 @@ nav {
   .close-icon {
     display: none;
     cursor: pointer;
-    // padding: 10px;
     width: 30px;
     height: 30px;
     color: var(--color-primary);
@@ -102,8 +101,35 @@ nav {
 
 @media (min-width: 920px) and (max-width: 1200px) {
 }
+
 @media (min-width: 600px) and (max-width: 920px) {
+  .nav-items {
+    .nav-item {
+      font-size: 12px !important;
+      padding: 8px 10px;
+
+      &:hover {
+        padding: 8px 10px !important;
+        border: 1.2px solid var(--color-primary) !important;
+      }
+    }
+
+    .sign-out-btn {
+      font-size: 12px !important;
+      padding: 8px 10px;
+
+      &:hover {
+        border: 1.2px solid var(--color-primary) !important;
+        padding: 8px 10px !important;
+      }
+
+      .signout-icon {
+        height: 17.5px !important;
+      }
+    }
+  }
 }
+
 @media (min-width: 360px) and (max-width: 600px) {
   nav {
     align-items: unset;
@@ -161,6 +187,23 @@ nav {
         padding: 0px !important;
         border: 0 !important;
       }
+    }
+  }
+
+  .sign-out-btn {
+    font-size: 12px !important;
+    padding: 8px 10px;
+    color: var(--color-primary) !important;
+    background-color: var(--color-background) !important;
+
+    &:hover {
+      border: none !important;
+      padding: 8px 10px !important;
+      text-decoration: underline;
+    }
+
+    .signout-icon {
+      height: 17.5px !important;
     }
   }
 

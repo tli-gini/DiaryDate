@@ -24,6 +24,26 @@
 
 // RWD
 
+@media (min-width: 600px) and (max-width: 920px) {
+  .chatbox-btn {
+    width: 46px;
+    height: 46px;
+    position: fixed;
+    top: 100px;
+    right: 40px;
+
+    &:hover {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .chatbox-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
 @media (min-width: 360px) and (max-width: 600px) {
   .chatbox-btn {
     display: none;

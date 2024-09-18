@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth, db } from "@/firebase/config.js";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import upload from "@/firebase/storage/uploadProfile.js";
 import { FcGoogle } from "react-icons/fc";
 import "./user.css";
@@ -101,6 +103,39 @@ const User = () => {
       }
     }
   };
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Check if the user already exists in Firestore
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+
+      if (!userDoc.exists()) {
+        // Create a new document
+        await setDoc(doc(db, "users", user.uid), {
+          username: user.displayName || "Google User",
+          email: user.email,
+          profile: user.photoURL || "/default-profile.png",
+          id: user.uid,
+          blocked: [],
+        });
+
+        await setDoc(doc(db, "userchats", user.uid), {
+          chats: [],
+        });
+      }
+
+      toast.success("Google 登入成功，歡迎加入 DiaryDate!");
+      router.push("/");
+    } catch (err) {
+      console.error("Google Sign-in: ", err);
+      toast.error("Google 登入失敗，請再試一次");
+    }
+  };
+
   return (
     <div className="container page-background user-page">
       <form onSubmit={handleSubmit} className="inputs">
@@ -207,7 +242,11 @@ const User = () => {
         {success && <div className="success-msg">{success}</div>}
 
         <div className="button-div">
-          <button type="button" className="sign-in-google-btn">
+          <button
+            type="button"
+            className="sign-in-google-btn"
+            onClick={handleGoogleSignIn}
+          >
             <FcGoogle className="sign-in-google-icon" />
             <div className="sign-in-google-btn-text">使用 Google 帳號登入</div>
           </button>

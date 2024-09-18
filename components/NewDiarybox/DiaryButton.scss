@@ -24,6 +24,26 @@
 
 // RWD
 
+@media (min-width: 600px) and (max-width: 920px) {
+  .diary-btn {
+    width: 46px;
+    height: 46px;
+    position: fixed;
+    top: 170px;
+    right: 40px;
+
+    &:hover {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .create-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
 @media (min-width: 360px) and (max-width: 600px) {
   .diary-btn {
     display: none;
