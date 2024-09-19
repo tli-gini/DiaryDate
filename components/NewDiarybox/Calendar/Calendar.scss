@@ -23,3 +23,27 @@
   border: none !important;
   color: #fff !important;
 }
+
+/* RWD */
+
+@media (min-width: 960px) and (max-width: 1200px) {
+}
+@media (min-width: 720px) and (max-width: 960px) {
+  .calendar-container {
+    padding: 10px;
+  }
+}
+@media (min-width: 360px) and (max-width: 720px) {
+  .calendar-container {
+    padding: 0px;
+    border-bottom: 1.5px solid var(--color-prim-background);
+    border-right: none;
+  }
+
+  .calendar-date {
+    .date-value {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+  }
+}

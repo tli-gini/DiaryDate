@@ -8,7 +8,6 @@
   flex-direction: column;
   justify-content: space-between;
   width: 50vw;
-  min-height: 40vh;
   padding: 20px;
   margin-top: 30px;
   box-shadow: 0px 0px 15px 0px rgba(182, 66, 66, 0.3);
@@ -24,16 +23,7 @@
     margin-bottom: 10px;
 
     .user-name {
-      font-size: 18px;
-    }
-
-    .user-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      padding: 10px;
-      color: var(--color-background);
-      background-color: var(--color-secondary);
+      font-size: 16px;
     }
 
     .user-profile {
@@ -111,5 +101,70 @@
     background-color: var(--color-white);
     color: var(--color-primary);
     border: 1.5px solid var(--color-primary);
+  }
+}
+
+// RWD
+
+@media (min-width: 600px) and (max-width: 920px) {
+  .diary-item {
+    width: 62vw;
+    padding: 14px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 12px;
+
+    .user-info {
+      gap: 16px;
+      margin-bottom: 10px;
+
+      .user-name {
+        font-size: 16px;
+      }
+
+      .user-profile {
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+    .title-text {
+      font-size: 14px !important;
+    }
+
+    .diary-item-bottom {
+      margin-top: 36px;
+
+      .realtime-div {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 360px) and (max-width: 600px) {
+  .diary-item-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .diary-item {
+    width: 95vw;
+    padding: 14px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 12px;
+
+    .post-item-title-text {
+      font-size: 14px !important;
+    }
+
+    .post-item-bottom {
+      margin-top: 36px;
+
+      .realtime-div {
+        font-size: 10px;
+      }
+    }
   }
 }
