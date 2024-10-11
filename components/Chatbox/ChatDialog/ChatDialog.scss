@@ -22,8 +22,8 @@
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   border-bottom: 1.5px solid var(--color-prim-background);
+  gap: 16px;
 
   .friend {
     display: flex;
@@ -45,22 +45,16 @@
       span {
         font-size: 16px;
       }
-
-      p {
-        font-size: 14px;
-        font-weight: 300;
-        color: #a5a5a5;
-      }
     }
   }
 
-  .icons {
-    display: flex;
-    gap: 20px;
-
-    img {
-      width: 20px;
-      height: 20px;
+  .back-icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: none;
+    &:hover {
+      color: var(--color-sec-background);
     }
   }
 }
@@ -93,12 +87,6 @@
       }
     }
 
-    img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
     .texts {
       flex: 1;
       display: flex;
@@ -199,5 +187,131 @@
   color: var(--color-white);
   &:hover {
     color: var(--color-primary);
+  }
+}
+
+/* RWD */
+
+@media (min-width: 960px) and (max-width: 1200px) {
+}
+@media (min-width: 600px) and (max-width: 960px) {
+  .chat-dialog {
+    flex: 1;
+    width: 65vw;
+    border-right: none;
+  }
+
+  .bottom {
+    border-bottom-right-radius: 20px;
+  }
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .chat-dialog {
+    flex: 1;
+    width: 95vw;
+    border: none;
+  }
+
+  .top {
+    padding: 16px;
+
+    .friend {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .user-profile {
+        width: 52px;
+        height: 52px;
+      }
+
+      .texts {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .back-icon {
+      display: block;
+    }
+  }
+
+  .center {
+    padding: 16px;
+    gap: 16px;
+
+    .message {
+      display: flex;
+      gap: 16px;
+      max-width: 60%;
+
+      .texts {
+        .msg-img {
+          width: 100%;
+          height: 240px;
+        }
+
+        p {
+          padding: 14px;
+          font-size: 12px;
+        }
+
+        span {
+          font-size: 9px;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    padding: 16px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    .msg-input {
+      flex: 1;
+      padding: 14px;
+      font-size: 12px;
+      &::placeholder {
+        font-size: 12px;
+      }
+    }
+
+    .emoji {
+      position: relative;
+
+      .emoji-picker-wrapper {
+        position: absolute;
+        bottom: 50px;
+        right: 0px;
+
+        .emoji-picker {
+          border-radius: 5px;
+          box-shadow: var(--box-shadow);
+        }
+      }
+    }
+
+    .sendButton {
+      height: 100%;
+      max-width: 60px;
+      padding: 10px 10px;
+
+      .send-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  .img-icon,
+  .happy-icon {
+    width: 24px;
+    height: 24px;
   }
 }

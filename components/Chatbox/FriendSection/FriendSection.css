@@ -1,1 +1,1 @@
-.friend-list{flex:1}
+.friend-list{flex:1}@media(min-width: 600px)and (max-width: 960px){.friend-list{flex:none;width:30vw}}@media(min-width: 360px)and (max-width: 600px){.friend-list{flex:1;display:none}}

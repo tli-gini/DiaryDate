@@ -13,6 +13,7 @@ import {
 import { db } from "@/firebase/config.js";
 import upload from "@/firebase/storage/uploadProfile.js";
 import { FaUser } from "react-icons/fa6";
+import { IoIosArrowBack } from "react-icons/io";
 import { IoIosImage } from "react-icons/io";
 import { IoIosHappy } from "react-icons/io";
 import { IoIosSend } from "react-icons/io";
@@ -204,6 +205,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ selectedFriend }) => {
   return (
     <div className="chat-dialog">
       <div className="top">
+        <IoIosArrowBack className="back-icon" />
         <div className="friend">
           <Image
             className="user-profile"

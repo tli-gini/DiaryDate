@@ -87,3 +87,23 @@
     }
   }
 }
+
+/* RWD */
+
+@media (min-width: 920px) and (max-width: 1200px) {
+}
+@media (min-width: 600px) and (max-width: 920px) {
+  .friend-request {
+    flex: none;
+    overflow: hidden;
+    display: none;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 600px) {
+  .friend-request {
+    flex: none;
+    overflow: hidden;
+    display: none;
+  }
+}

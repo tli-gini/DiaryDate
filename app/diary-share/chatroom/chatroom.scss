@@ -13,3 +13,16 @@
   background-color: var(--color-white);
   color: var(--color-secondary);
 }
+
+/* RWD */
+
+@media (min-width: 920px) and (max-width: 1200px) {
+}
+@media (min-width: 600px) and (max-width: 920px) {
+}
+@media (min-width: 360px) and (max-width: 600px) {
+  .chatroom-container {
+    display: flex;
+    width: 95vw;
+  }
+}
