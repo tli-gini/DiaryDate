@@ -1,6 +1,6 @@
-<img src="./public/img/phone-icon.png" width="100" />
+<img src="./public/favicon.ico" width="100" />
 
-# [DiaryDate](https://diary-date.vercel.app/)
+# [DiaryDate | 寫自己・交換日記](https://diary-date.vercel.app/)
 
 DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以在將文字記錄在日曆中，並與好友進行即時聊天。
 
