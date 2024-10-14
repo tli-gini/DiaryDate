@@ -10,4 +10,8 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以在�
 
 ![Video](./public/img/2024-10-118.10.18-ezgif.com-video-to-gif-converter.gif)
 
-## 寫日記功能
+![image](./public/img/emoji-picker.jpg)
+
+## 發布日記功能
+
+## 日記收藏功能
