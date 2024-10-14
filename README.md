@@ -8,6 +8,6 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以在�
 
 ## 聊天功能
 
-[Watch the video](https://youtu.be/PggPWhvkU28)
+[![Watch the video](https://github.com/tli-gini/DiaryDate/issues/1#issue-2585126575)](https://github.com/tli-gini/DiaryDate/issues/1#issue-2585126575)
 
 ## 寫日記功能
