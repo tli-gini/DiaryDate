@@ -2,9 +2,9 @@
 
 # [DiaryDate | 寫自己・交換日記](https://diary-date.vercel.app/)
 
-DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以在將文字記錄在日曆中，並與好友進行即時聊天。
+DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以將文字記錄在日曆中，並與好友進行即時聊天。
 
-<img src="./public/img/homepage.jpg" width="600" />
+<img src="./public/img/homepage.jpg" width="700" />
 
 ## 發布日記功能
 
@@ -12,7 +12,7 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以在�
 
 - 內文支援 Markdown 語法，編寫過程更有彈性。
 
-<img src="./public/img/createDiary.jpg" width="600" />
+<img src="./public/img/createDiary.jpg" width="700" />
 
 - 發布日記後會直接進入“我的日記”頁面，在這裡可以看到所有發布過的日記，也可以刪除日記。
 
@@ -30,4 +30,6 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以在�
 
 ![Video](./public/img/2024-10-118.10.18-ezgif.com-video-to-gif-converter.gif)
 
-<img src="./public/img/emoji-picker.jpg" width="600" />
+- 插入 emoji picker 增添聊天趣味。
+
+<img src="./public/img/emoji-picker.jpg" width="700" />
