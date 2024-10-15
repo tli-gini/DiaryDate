@@ -44,7 +44,7 @@
   .request-user {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
 
     span {
       font-size: 14px;
@@ -80,8 +80,6 @@
       color: var(--color-white);
       border-radius: 50px;
       &:hover {
-        width: 36px;
-        height: 36px;
         background-color: var(--color-primary);
       }
     }

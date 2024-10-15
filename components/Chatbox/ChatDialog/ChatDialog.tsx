@@ -12,7 +12,6 @@ import {
 } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import upload from "@/firebase/storage/uploadProfile.js";
-import { FaUser } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosImage } from "react-icons/io";
 import { IoIosHappy } from "react-icons/io";

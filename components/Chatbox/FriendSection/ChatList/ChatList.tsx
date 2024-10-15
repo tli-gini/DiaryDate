@@ -1,7 +1,6 @@
 import "./ChatList.scss";
 import { useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
-import { FaUser } from "react-icons/fa6";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "@/firebase/config.js";
 import { UseUserStore } from "@/lib/userStorage";
@@ -98,11 +97,9 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectFriend }) => {
               className="friend"
               onClick={() => onSelectFriend(targetFriend)}
             >
-              {/* <FaUser className="friend-profile" /> */}
               <Image src={targetFriend.profile} alt="" width={46} height={46} />
               <div className="friend-name">
                 <span>{targetFriend.displayName}</span>
-                {/* <p>Last message...</p> */}
               </div>
             </div>
           ))}

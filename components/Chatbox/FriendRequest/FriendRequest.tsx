@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./FriendRequest.css";
-import { FaUser } from "react-icons/fa6";
 import { IoIosCheckmark } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
 import { IoPersonAdd } from "react-icons/io5";
@@ -56,7 +55,6 @@ const FriendRequest: React.FC = () => {
         {requests.map((request) => (
           <div key={request.id} className="request-item">
             <div className="request-user">
-              {/* <FaUser className="request-profile" /> */}
               <Image src={request.profile} alt="" width={46} height={46} />
               <span className="request-name">{request.displayName}</span>
             </div>
