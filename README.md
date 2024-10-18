@@ -55,6 +55,8 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以將�
 
 - 對方點選 “✘”，您的邀請就會被移除，您仍可以在 “交換日記” 頁面重新發送交友邀請。
 
+![Video](./public/img/acceptFriendRequest.gif)
+
 ## 即時聊天功能
 
 - 聊天紀錄自動捲動到最底層，提升使用者體驗。
@@ -70,3 +72,7 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以將�
 - 點擊任意位置關閉 Emoji Picker。
 
 <img src="./public/img/emoji-picker.jpg" width="700" />
+
+## 組建架構圖
+
+<img src="./public/img/component-tree.jpg" width="700" />
