@@ -29,9 +29,10 @@ interface Chat {
 
 interface ChatListProps {
   onSelectFriend: (targetFriend: ChatFriend) => void;
+  reload: number;
 }
 
-const ChatList: React.FC<ChatListProps> = ({ onSelectFriend }) => {
+const ChatList: React.FC<ChatListProps> = ({ onSelectFriend, reload }) => {
   const { currentUser, getFriends } = UseUserStore();
   const [chatFriends, setChatFriends] = useState<ChatFriend[]>([]);
 
@@ -49,7 +50,7 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectFriend }) => {
     };
 
     fetchChatFriends();
-  }, [currentUser, getFriends]);
+  }, [currentUser, getFriends, reload]);
 
   // chat with a friend
   const [chats, setChats] = useState<Chat>({});

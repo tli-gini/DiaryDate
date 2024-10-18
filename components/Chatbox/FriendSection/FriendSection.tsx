@@ -12,13 +12,17 @@ interface ChatFriend {
 
 interface FriendSectionProps {
   onSelectFriend: (targetFriend: ChatFriend) => void;
+  reload: number;
 }
 
-const FriendSection: React.FC<FriendSectionProps> = ({ onSelectFriend }) => {
+const FriendSection: React.FC<FriendSectionProps> = ({
+  onSelectFriend,
+  reload,
+}) => {
   return (
     <div className="friend-list">
       <UserInfo />
-      <ChatList onSelectFriend={onSelectFriend} />
+      <ChatList onSelectFriend={onSelectFriend} reload={reload} />
     </div>
   );
 };

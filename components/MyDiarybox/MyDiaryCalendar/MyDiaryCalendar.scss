@@ -1,4 +1,4 @@
-.new-diary-container {
+.c-new-diary-container {
   display: flex;
   width: 76vw;
   min-height: 76vh;
@@ -26,34 +26,29 @@
 @media (min-width: 960px) and (max-width: 1200px) {
 }
 @media (min-width: 720px) and (max-width: 960px) {
-  .new-diary-container {
+  .c-new-diary-container {
     display: flex;
     width: 82vw;
-    min-height: 76vh;
-    margin: 30px 0;
     position: relative;
     right: 44px;
   }
 }
 
 @media (min-width: 600px) and (max-width: 720px) {
-  .new-diary-container {
+  .c-new-diary-container {
     display: flex;
     flex-direction: column;
     width: 82vw;
-    min-height: 76vh;
-    margin: 30px 0;
     position: relative;
     right: 44px;
   }
 }
 
 @media (min-width: 360px) and (max-width: 600px) {
-  .new-diary-container {
+  .c-new-diary-container {
     display: flex;
     flex-direction: column;
     width: 95vw;
-    min-height: 76vh;
     margin: 10px 0 40px 0;
   }
 }

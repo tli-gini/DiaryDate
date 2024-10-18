@@ -8,7 +8,7 @@ const MyDiaryCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
 
   return (
-    <div className="new-diary-container">
+    <div className="c-new-diary-container">
       <CalendarItem
         selectedDate={selectedDate}
         onDateChange={setSelectedDate}

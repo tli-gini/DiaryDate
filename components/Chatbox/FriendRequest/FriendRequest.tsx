@@ -16,10 +16,15 @@ interface FriendRequest {
   status: string;
 }
 
-const FriendRequest: React.FC = () => {
+interface FriendRequestProps {
+  reload: () => void;
+}
+
+const FriendRequest: React.FC<FriendRequestProps> = ({ reload }) => {
   const { currentUser, acceptFriendRequest, rejectFriendRequest } =
     UseUserStore();
   const [requests, setRequests] = useState<FriendRequest[]>([]);
+  const [removeRequest, setRemoveRequest] = useState(0);
 
   useEffect(() => {
     const fetchRequests = async () => {
@@ -39,7 +44,19 @@ const FriendRequest: React.FC = () => {
     };
 
     fetchRequests();
-  }, [currentUser]);
+  }, [currentUser, removeRequest]);
+
+  const handleAcceptFriendRequest = async (fromUserId: string) => {
+    await acceptFriendRequest(currentUser!.id, fromUserId);
+    setRemoveRequest((prev) => prev + 1);
+    reload();
+  };
+
+  const handleRejectFriendRequest = async (fromUserId: string) => {
+    await rejectFriendRequest(currentUser!.id, fromUserId);
+    setRemoveRequest((prev) => prev + 1);
+    reload();
+  };
 
   if (!currentUser) {
     return null;
@@ -61,15 +78,11 @@ const FriendRequest: React.FC = () => {
             <div className="check-x-wrapper">
               <IoIosCheckmark
                 className="check-icon"
-                onClick={() =>
-                  acceptFriendRequest(currentUser.id, request.fromUser)
-                }
+                onClick={() => handleAcceptFriendRequest(request.fromUser)}
               />
               <IoIosClose
                 className="x-icon"
-                onClick={() =>
-                  rejectFriendRequest(currentUser.id, request.fromUser)
-                }
+                onClick={() => handleRejectFriendRequest(request.fromUser)}
               />
             </div>
           </div>

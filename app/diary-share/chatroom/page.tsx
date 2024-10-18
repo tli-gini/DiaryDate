@@ -21,6 +21,7 @@ interface ChatFriend {
 const Chatroom = () => {
   const { currentUser, isLoading, fetchUserInfo } = UseUserStore();
   const [selectedFriend, setSelectedFriend] = useState<ChatFriend | null>(null);
+  const [reload, setReload] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -42,9 +43,9 @@ const Chatroom = () => {
     setSelectedFriend(targetFriend);
   };
 
-  // if (!isLoading && !currentUser) {
-  //   router.push("/user");
-  // }
+  const handleReload = () => {
+    setReload((prev) => prev + 1);
+  };
 
   if (isLoading) return <div className="loading">Loading...</div>;
 
@@ -53,9 +54,9 @@ const Chatroom = () => {
       <Chatbox />
       <Diarybox />
       <div className="chatroom-container ">
-        <FriendSection onSelectFriend={handleSelectFriend} />
+        <FriendSection onSelectFriend={handleSelectFriend} reload={reload} />
         <ChatDialog selectedFriend={selectedFriend} />
-        <FriendRequest />
+        <FriendRequest reload={handleReload} />
       </div>
     </div>
   );
