@@ -8,10 +8,20 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以將�
 
 ## 目錄
 
+- [組件架構](#組件架構)
+- [使用技術](#使用技術)
 - [發布日記功能](#發布日記功能)
 - [日記收藏功能](#日記收藏功能)
 - [交友功能](#交友功能)
 - [即時聊天功能](#即時聊天功能)
+
+## 使用技術
+
+<img src="./public/img/使用技術.png" width="700" />
+
+## 組件架構
+
+<img src="./public/img/組件架構.png" width="700" />
 
 ## 發布日記功能
 
@@ -72,7 +82,3 @@ DiaryDate 是兼具交友與聊天功能的寫日記平台，使用者可以將�
 - 點擊任意位置關閉 Emoji Picker。
 
 <img src="./public/img/emoji-picker.jpg" width="700" />
-
-## 組建架構圖
-
-<img src="./public/img/component-tree.jpg" width="700" />
